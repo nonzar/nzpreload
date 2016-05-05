@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        textarea {
+            font-size: 14px;
+            width: 100%;
+            max-width: 100%;
+            min-width: 100%;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+<textarea></textarea>
+<script src="nz.preload.js"></script>
+<script>
+    var textbox = document.querySelector("textarea");
+    var preload = new NZPreload();
+    preload.on("progress", function (e) {
+        console.log(e);
+        textbox.innerHTML += e.progress * 100 + "%\r\n";
+    });
+    preload.on("complete", function (e) {
+        console.log(e);
+        textbox.innerHTML += "complete";
+    });
+    preload.load([
+        "images/1.png",
+        "images/2.png",
+        "images/3.png",
+        "images/4.jpg"
+    ]);
+    var oReq = new XMLHttpRequest();
+    oReq.open("GET", "images/1.png", true);
+    oReq.responseType = "blob";
+    oReq.onreadystatechange = function (e) {
+        if (oReq.readyState == oReq.DONE) {
+            var blob = oReq.response;
+            console.log(blob);
+            var image = new Image();
+            image.addEventListener("load", function (evt) {
+                URL.revokeObjectURL(evt.target.src);
+                document.body.appendChild(image);
+            });
+            image.src = URL.createObjectURL(blob);
+        }
+    }
+    oReq.send();
+</script>
+</body>
+</html>

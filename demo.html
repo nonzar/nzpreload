@@ -33,22 +33,6 @@
         "images/3.png",
         "images/4.jpg"
     ]);
-    var oReq = new XMLHttpRequest();
-    oReq.open("GET", "images/1.png", true);
-    oReq.responseType = "blob";
-    oReq.onreadystatechange = function (e) {
-        if (oReq.readyState == oReq.DONE) {
-            var blob = oReq.response;
-            console.log(blob);
-            var image = new Image();
-            image.addEventListener("load", function (evt) {
-                URL.revokeObjectURL(evt.target.src);
-                document.body.appendChild(image);
-            });
-            image.src = URL.createObjectURL(blob);
-        }
-    }
-    oReq.send();
 </script>
 </body>
 </html>

@@ -1,6 +1,9 @@
 ##简介
 一个预加载类,利用`image()`对象实现.
 
+##依赖
+- **[jquery](http://)**: 异步加载需使用到jquery的`load()`方法
+
 ##使用
 
 ###new NZPreload(options)

@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 ##简介
 一个预加载类,利用`image()`对象实现.
 
@@ -119,6 +120,9 @@ console.log(preload.isCompleted(taskId));//是否加载完成
 ##支持
 
 支持**`html5`**&**`css3`**的浏览器
+=======
+# nzpreload
+>>>>>>> origin/master
 =======
 # nzpreload
 >>>>>>> origin/master
